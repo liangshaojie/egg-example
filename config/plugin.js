@@ -24,3 +24,17 @@ exports.doraContentTemp = {
     package: 'egg-dora-contenttemp',
     path: path.join(__dirname, "../lib/plugin/egg-dora-contenttemp")
 };
+
+// doraTemplateConfigPluginBegin
+exports.doraTemplateConfig = {
+    enable: true,
+    package: 'egg-dora-templateconfig',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-templateconfig")
+};
+
+// doraContentCategoryPluginBegin
+exports.doraContentCategory = {
+    enable: true,
+    package: 'egg-dora-contentcategory',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-contentcategory")
+};

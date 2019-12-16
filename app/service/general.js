@@ -15,11 +15,8 @@ exports._item = async(ctx, Model, {
     query = {},
     populate = []
 } = {}) => {
-    console.log(query._id)
     if (query._id && !shortid.isValid(query._id)) {
-        console.log("9999999999999")
         throw new Error(ctx.__('validate_error_params'));
     }
-    console.log(query, files)
-    // return await Model.findOne(query, files).populate(populate).exec();
+    return await Model.findOne(query, files).populate(populate).exec();
 }

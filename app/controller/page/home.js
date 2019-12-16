@@ -21,11 +21,25 @@ class HomeController extends Controller {
         let targetTempPage = ctx.tempPage;
         // 获取当前模板信息   在extend里面的方法
         let defaultTemp = await ctx.helper.reqJsonData('contentTemplate/getDefaultTempInfo');
-        // console.log(defaultTemp)
-        this.ctx.body = {
-            "name": "liangshaoje",
-            app: this.app
+
+        // 获取用户信息
+        if (ctx.session.logined) {
+            pageData.userInfo = ctx.session.user;
+            pageData.logined = ctx.session.logined;
         }
+
+        // 静态目录
+        if (!_.isEmpty(defaultTemp)) {
+            pageData.staticforder = defaultTemp.alias;
+        } else {
+            throw new Error(ctx.__('validate_error_params'));
+        }
+
+        // 所有页面都需要的基础数据
+        pageData.cateTypes = await ctx.helper.reqJsonData('contentCategory/getList', payload);
+        // pageData.siteInfo = await this.getSiteInfo(ctx);
+        // pageData.staticRootPath = that.app.config.static.prefix
+
     }
 }
 
