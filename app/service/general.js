@@ -84,7 +84,6 @@ exports._list = async(Model, payload, {
         if (payload.pageSize > 0) {
             docs = await Model.find(query, files).skip(skipNum).limit(pageSize).sort(sort).populate(populate).exec();
         } else {
-            debugger
             docs = await Model.find(query, files).skip(skipNum).sort(sort).populate(populate).exec();
         }
     }

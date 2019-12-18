@@ -72,11 +72,23 @@ class HomeController extends Controller {
         // 所有页面都需要的基础数据
         pageData.cateTypes = await ctx.helper.reqJsonData('contentCategory/getList', payload);
         pageData.siteInfo = await this.getSiteInfo(ctx);
-        debugger
-        // pageData.staticRootPath = that.app.config.static.prefix
+        pageData.staticRootPath = that.app.config.static.prefix
+
+        // 针对分类页和内容详情页动态添加meta
+        let defaultTempItems = defaultTemp.items;
+
+        if (!_.isEmpty(pageData.siteInfo)) {
+            let siteDomain = pageData.siteInfo.configs.siteDomain;
+            let ogUrl = siteDomain;
+            let ogImg = siteDomain + "/public/themes/" + defaultTemp.alias + "/images/mobile_logo2.jpeg"
+            if (ctx.pageType == 'index') { // 首页
+                pageData.documentList = await ctx.helper.reqJsonData('content/getList', payload);
+            }
+        }
 
         this.ctx.body = {
-            pageData
+            pageData,
+            defaultTempItems
         }
 
     }

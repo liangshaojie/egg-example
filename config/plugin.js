@@ -38,3 +38,10 @@ exports.doraContentCategory = {
     package: 'egg-dora-contentcategory',
     path: path.join(__dirname, "../lib/plugin/egg-dora-contentcategory")
 };
+
+// doraContentPluginBegin
+exports.doraContent = {
+    enable: true,
+    package: 'egg-dora-content',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-content")
+};
