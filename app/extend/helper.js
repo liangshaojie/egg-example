@@ -29,7 +29,7 @@ module.exports = {
             throw new Error(responseData.data.message);
         }
     },
-
+    // 成功渲染的方法
     renderSuccess(ctx, {
         data = {},
         message = ''
@@ -37,7 +37,7 @@ module.exports = {
         ctx.body = {
             status: 200,
             data: data || {},
-            message: message || ''
+            message: message || '' 
         }
         ctx.status = 200;
     },

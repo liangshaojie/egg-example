@@ -2,6 +2,7 @@
 
 const Controller = require('egg').Controller;
 const _ = require('lodash');
+const pkg = require('../../../package.json')
 
 class HomeController extends Controller {
     async getDataForIndexPage() {
@@ -9,8 +10,41 @@ class HomeController extends Controller {
         ctx.query.current = ctx.params.current;
         ctx.tempPage = 'index.html';
         ctx.pageType = "index"
-        ctx.body = 'hi, egg 5665';
         await this.getPageData(this);
+    }
+
+    // 获取页面基础信息
+    async getSiteInfo(ctx, appConfig) {
+        let configs = await ctx.helper.reqJsonData('systemConfig/getConfig');
+        const {
+            siteName,
+            siteDiscription,
+            siteKeywords,
+            siteAltKeywords,
+            ogTitle,
+        } = configs || [];
+
+        let {
+            title,
+            des,
+            keywords
+        } = ctx.params;
+        let pageTitle = title ? (title + ' | ' + siteName) : siteName;
+        let discription = des ? des : siteDiscription;
+        let key = keywords ? keywords : siteKeywords;
+        let altkey = siteAltKeywords || '';
+        return {
+            title: pageTitle,
+            ogTitle,
+            discription,
+            key,
+            altkey,
+            configs: configs || [],
+            version: pkg.version,
+            lang: ctx.session.locale,
+            router: ctx.originalUrl.split('/')[1]
+        }
+
     }
     async getPageData(that) {
         let { ctx } = that;
@@ -37,8 +71,13 @@ class HomeController extends Controller {
 
         // 所有页面都需要的基础数据
         pageData.cateTypes = await ctx.helper.reqJsonData('contentCategory/getList', payload);
-        // pageData.siteInfo = await this.getSiteInfo(ctx);
+        pageData.siteInfo = await this.getSiteInfo(ctx);
+        debugger
         // pageData.staticRootPath = that.app.config.static.prefix
+
+        this.ctx.body = {
+            pageData
+        }
 
     }
 }
