@@ -2,8 +2,7 @@
 
 const Controller = require('egg').Controller;
 const _ = require('lodash');
-const pkg = require('../../../package.json')
-
+const pkg = require('@root/package.json')
 class HomeController extends Controller {
     async getDataForIndexPage() {
         const ctx = this.ctx;
@@ -84,13 +83,23 @@ class HomeController extends Controller {
             if (ctx.pageType == 'index') { // 首页
                 pageData.documentList = await ctx.helper.reqJsonData('content/getList', payload);
             }
-        }
 
-        this.ctx.body = {
-            pageData,
-            defaultTempItems
+            pageData.ogData = {
+                url: ogUrl,
+                img: ogImg
+            };
         }
+        let targetLocalJson = require('@root/config/locale/zh-CN.json')
 
+        // 记录针对组件的国际化信息
+        let sysKeys = {};
+        for (let lockey in targetLocalJson) {
+            if (lockey.indexOf('_layer_') > 0 || lockey.indexOf('label_system_') >= 0 || lockey.indexOf('label_uploader_') >= 0) {
+                sysKeys[lockey] = ctx.__(lockey);
+            }
+        }
+        pageData.lsk = JSON.stringify(sysKeys);
+        await ctx.render(defaultTemp.alias + '/' + targetTempPage, pageData);
     }
 }
 

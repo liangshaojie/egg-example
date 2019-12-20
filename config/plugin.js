@@ -13,6 +13,13 @@ const path = require("path")
 //     }
 // };
 
+
+// add you build-in plugin here, example:
+exports.nunjucks = {
+    enable: true,
+    package: 'egg-view-nunjucks',
+};
+
 exports.mongoose = {
     enable: true,
     package: 'egg-mongoose',
@@ -44,4 +51,18 @@ exports.doraContent = {
     enable: true,
     package: 'egg-dora-content',
     path: path.join(__dirname, "../lib/plugin/egg-dora-content")
+};
+
+// doraContentMessagePluginBegin
+exports.doraContentMessage = {
+    enable: true,
+    package: 'egg-dora-contentmessage',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-contentmessage")
+};
+
+// doraRegUserPluginBegin
+exports.doraRegUser = {
+    enable: true,
+    package: 'egg-dora-reguser',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-reguser")
 };

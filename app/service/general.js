@@ -115,3 +115,7 @@ exports._list = async(Model, payload, {
         return docs;
     }
 }
+
+exports._count = async(Model, query = {}) => {
+    return await Model.countDocuments(query);
+}

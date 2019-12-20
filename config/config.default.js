@@ -23,7 +23,14 @@ module.exports = appInfo => {
         },
         printdate: {
             aaa: "aaa"
-        }
+        },
+        // nunjucks模板引擎
+        view: {
+            defaultViewEngine: 'nunjucks',
+            mapping: {
+                '.html': 'nunjucks',
+            },
+        },
     };
 
     return {

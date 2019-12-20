@@ -4,4 +4,5 @@
  * @Last Modified by: doramart
  * @Last Modified time: 2019-07-30 11:14:07
  */
+require('module-alias/register')
 require('./global');
