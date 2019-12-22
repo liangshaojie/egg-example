@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     <meta name="description" content="{{siteInfo.discription}}">
     <meta content="{{siteInfo.key}}" name="keywords" />
     <meta property="og:type" content="website" />
@@ -27,8 +28,9 @@
     <link rel="stylesheet" href="{{staticRootPath}}/plugins/layer/theme/default/layer.css">
 
     <!--default theme-->
-    <script src="{{staticRootPath}}/themes/{{staticforder}}/js/dora.front.js?version={{siteInfo.version}}" type="text/javascript">
-    </script>
+    <script src="{{staticRootPath}}/themes/{{staticforder}}/js/dora.front.js?version={{siteInfo.version}}"
+        type="text/javascript">
+        </script>
     <link href="{{staticRootPath}}/themes/{{staticforder}}/css/white.css?version={{siteInfo.version}}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,6 +50,7 @@
     <div class="mainbody" id="{{pageType}}">
         <input type="hidden" value="{{siteInfo.lang}}" id="siteLang"> {% block content %}{% endblock %}
     </div>
+    {% include "./footer.html" %}
 </body>
 
 </html>

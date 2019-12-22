@@ -1,1 +1,21 @@
-{% extends "./public/defaultTemp.html" %} 
+{% extends "./public/defaultTemp.html" %}
+
+{% block content %}
+{% import "./public/adsPannel.html" as adsPannel %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 main-container">
+            <div class="row">
+                <div class="col-md-8 left-frame">
+                    <div class="row slider-box">
+                        <div class="col-md-10">
+                            {% remote key="recommend",api="ads/getOne",query='{"name":"recommend"}' %}
+                            4545
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
