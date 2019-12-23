@@ -105,5 +105,11 @@ gulp.task('uglifyLayerJs', function () {
 
 
 gulp.task('default', ['uglifyWhiteJs', 'uglifyEditorJs', 'uglifyPagerJs', 'uglifyLayerJs'], function () {
+    console.log("来了老弟")
     gulp.watch(doraWhiteSassPath, ['sass']);
+});
+
+gulp.task('ceshi',function () {
+    console.log("12121212121212")
+    gulp.watch('./themes/dorawhite/css');
 });
