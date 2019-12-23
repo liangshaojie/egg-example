@@ -66,3 +66,10 @@ exports.doraRegUser = {
     package: 'egg-dora-reguser',
     path: path.join(__dirname, "../lib/plugin/egg-dora-reguser")
 };
+
+// doraAdsPluginBegin
+exports.doraAds = {
+    enable: true,
+    package: 'egg-dora-ads',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-ads")
+};
