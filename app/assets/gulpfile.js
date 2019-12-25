@@ -12,7 +12,7 @@ const autoprefixer = require('gulp-autoprefixer');
 // 设置项目根目录
 const projectPath = '..';
 
-var tempforder = "qingyulan";
+var tempforder = "dorawhite";
 var doraWhiteSassPath = './themes/' + tempforder + '/css/white.scss';
 var doraWhiteCssPath = projectPath + '/public/themes/' + tempforder + '/css';
 
@@ -103,13 +103,6 @@ gulp.task('uglifyLayerJs', function () {
     gulp.watch(doraLayerSassPath, ['layerSass']);
 });
 
-
 gulp.task('default', ['uglifyWhiteJs', 'uglifyEditorJs', 'uglifyPagerJs', 'uglifyLayerJs'], function () {
-    console.log("来了老弟")
     gulp.watch(doraWhiteSassPath, ['sass']);
-});
-
-gulp.task('ceshi',function () {
-    console.log("12121212121212")
-    gulp.watch('./themes/dorawhite/css');
 });

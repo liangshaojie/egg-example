@@ -229,9 +229,11 @@ header {
     .rec-li {
         position: relative;
         margin-bottom: 10px;
+        &:last-child{
+            margin-bottom: 0;
+        }
         .contentImg {
-            height: 7.2rem;
-
+            height: 8.6rem;
             img {
                 width: 100%;
                 height: 100%;
