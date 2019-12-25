@@ -14,6 +14,7 @@
     "egg-view-nunjucks": "^2.2.0",
     "lodash": "^4.17.15",
     "module-alias": "^2.2.2",
+    "shelljs": "^0.8.3",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
@@ -38,7 +39,9 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "makePrdDoc": "apidoc -i lib/plugin -e node_modules -o app/public/apidoc/ && npm run modifyPrdDoc",
+    "modifyPrdDoc": "node ./build/renderApiDoc --docv dev"
   },
   "ci": {
     "version": "10"
@@ -46,6 +49,11 @@
   "repository": {
     "type": "git",
     "url": ""
+  },
+  "apidoc": {
+    "title": "DoraCMS Api",
+    "description": "DoraCMS App接口文档",
+    "url": "http://localhost:9090"
   },
   "_moduleAliases": {
     "@root": ".",

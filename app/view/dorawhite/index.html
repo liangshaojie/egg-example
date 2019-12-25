@@ -12,16 +12,17 @@
                         <div class="col-md-2 top-rec-contents">
                             {% remote key="reCommendListTop",api="content/getList",query='{"model":"1","pageSize":3,"isPaging":"0"}' %}
                             {% if reCommendListTop.length > 0 %}
-                            {% for item in reCommendListTop %}
-                            <div class="rec-li">
-                                <div class="contentImg">
-                                    <a href="/details/{{item._id}}.html">
-                                        <img src="/static/upload/smallimgs/img1436164390000.jpg" alt="{{item.title}}" />
-                                    </a>
+                                {% for item in reCommendListTop %}
+                                <div class="rec-li">
+                                    <div class="contentImg">
+                                        <a href="/details/{{item._id}}.html">
+                                            <img src="/static/upload/smallimgs/img1436164390000.jpg" alt="{{item.title}}" />
+                                        </a>
+                                    </div>
+                                    <a class="title" href="/details/{{item._id}}.html">{{item.title | cutwords(15)}}</a>
                                 </div>
-                                <a class="title" href="/details/{{item._id}}.html">{{item.title | cutwords(15)}}</a>
-                            </div>
-                            {% endfor %} {% endif %}
+                                {% endfor %} 
+                            {% endif %}
                         </div>
                     </div>
                 </div>
