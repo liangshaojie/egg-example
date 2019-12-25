@@ -25,6 +25,17 @@
                             {% endif %}
                         </div>
                     </div>
+                    {% include "./public/itemListTemp.html" %}
+                </div>
+                <div class="col-md-4 right-frame">
+                    {% remote key="publishCms",api="ads/getOne",query='{"name":"publishCms"}' %}
+                    {{adsPannel.slider(publishCms)}}
+                    {% remote key="qrCode",api="ads/getOne",query='{"name":"qrCode"}' %}
+                    {{adsPannel.slider(qrCode)}} 
+
+                    {% include "./public/hotNewsList.html" %} 
+                    {% include "./public/reCommendList.html" %} 
+                    {% include "./public/newMessageBoard.html" %}
                 </div>
             </div>
         </div>

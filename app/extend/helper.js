@@ -21,7 +21,7 @@ module.exports = {
         } else if (method === 'post') {
             responseData = await Axios.post(targetUrl, params)
         }
-        
+
         // 有响应体切状态码是200  返回数据，否则抛出一个错误
         if (responseData && responseData.status == '200' && !_.isEmpty(responseData.data) && responseData.data.status == 200) {
             return responseData.data.data;
@@ -37,8 +37,29 @@ module.exports = {
         ctx.body = {
             status: 200,
             data: data || {},
-            message: message || '' 
+            message: message || ''
         }
         ctx.status = 200;
     },
+    renderFail(ctx, {
+        message = '',
+        data = {},
+    } = {}) {
+        if (message) {
+            // throw new Error(message);
+            if (message instanceof Object) {
+                message = message.message;
+            }
+            ctx.body = {
+                status: 500,
+                message: message,
+                data: data || {},
+            }
+            ctx.status = 200;
+        } else {
+            throw new Error(message);
+        }
+
+    },
+
 }

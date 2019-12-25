@@ -1,0 +1,27 @@
+{
+    "type": "1",
+    "carousel": false,
+    "state": true,
+    "height": 65,
+    "items": [
+        {
+            "height": null,
+            "target": "_blank",
+            "_id": "ryG8AO3sZ",
+            "title": "",
+            "link": "https://www.html-js.cn/service___HyVhxcjAE",
+            "width": null,
+            "alt": "远程帮助",
+            "sImg": "/static/upload/images/img1564672092006.jpg",
+            "date": "2017-09-30T02:15:38.008Z",
+            "__v": 0,
+            "id": "ryG8AO3sZ"
+        }
+    ],
+    "_id": "SJllJUAdcZ",
+    "name": "qrCode",
+    "comments": "doracms沟通群",
+    "date": "2017-09-15 12:23:52",
+    "__v": 0,
+    "id": "SJllJUAdcZ"
+}

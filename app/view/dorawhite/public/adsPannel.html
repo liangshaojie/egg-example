@@ -47,17 +47,17 @@
                         <a href="{{item.link}}" target="_blank">
                             <img src="{{item.sImg}}" alt="{{item.title}}">
                         </a>
-
                     </li>
                     {% endfor %}
                 </ul>
             </div>
-            {% elif targetAds.items.length == 1%} {% set normalAds = targetAds.items[0] %}
-            <div class="normal-img-ads">
-                <a href="{{normalAds.link}}" target="_blank">
-                    <img src="{{ normalAds.sImg}}" alt="{{normalAds.title}}">
-                </a>
-            </div>
+            {% elif targetAds.items.length == 1%}
+                {% set normalAds = targetAds.items[0] %}
+                <div class="normal-img-ads">
+                    <a href="{{normalAds.link}}" target="_blank">
+                        <img src="{{ normalAds.sImg}}" alt="{{normalAds.title}}">
+                    </a>
+                </div>
             {% endif %}
         {% elif targetAds.type == '0' %}
             <div class="normal-text-ads">
