@@ -1004,10 +1004,12 @@ var regVm = avalon.define({
         regVm.reset();
     },
     sendMsgCode: function () {
+        console.log("565656565565656565")
+        debugger
         if (regVm.basetime != 120) {
             return false;
         }
-
+        debugger
         if (regVm.regType == '1') {
             if (!/^[0-9]*$/.test(regVm.phoneNum)) {
                 layer.open({

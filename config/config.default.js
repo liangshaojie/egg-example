@@ -13,7 +13,15 @@ module.exports = appInfo => {
             csrf: {
                 enable: false,
             }
-        }
+        },
+        // 加密解密
+        session_secret: 'doracms_secret',
+        auth_cookie_name: 'doracms',
+        encrypt_key: 'dora',
+        salt_aes_key: "doracms_",
+        salt_md5_key: "dora",
+        encryptApp_key: '751f621ea5c8f930',
+        encryptApp_vi: '2624750004598718',
     };
     // use for cookie sign key, should change to your own and keep security
     config.keys = appInfo.name + '_1575946728695_8972';
