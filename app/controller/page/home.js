@@ -4,6 +4,28 @@ const Controller = require('egg').Controller;
 const _ = require('lodash');
 const pkg = require('@root/package.json')
 class HomeController extends Controller {
+    // 用户注册页面
+    async getDataForUserReg() {
+        const ctx = this.ctx;
+        if (ctx.session.user) {
+            ctx.redirect("/");
+        } else {
+            ctx.title = '用户注册';
+            ctx.tempPage = 'users/userReg.html';
+            await this.getPageData(this);
+        }
+    }
+    // 显示login页面
+    async getDataForUserLogin() {
+        const ctx = this.ctx;
+        if (ctx.session.user) {
+            ctx.redirect("/");
+        } else {
+            ctx.title = '用户登录';
+            ctx.tempPage = 'users/userLogin.html';
+            await this.getPageData(this);
+        }
+    }
     async getDataForIndexPage() {
         const ctx = this.ctx;
         ctx.query.current = ctx.params.current;

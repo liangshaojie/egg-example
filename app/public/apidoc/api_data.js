@@ -285,5 +285,102 @@ define({ "api": [
     "version": "1.0.0",
     "filename": "lib/plugin/egg-dora-content/app/controller/api/content.js",
     "groupTitle": "Content"
+  },
+  {
+    "type": "post",
+    "url": "/api/user/sendVerificationCode",
+    "title": "发送验证码",
+    "description": "<p>发送验证码</p>",
+    "name": "sendVerificationCode",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "phoneNum",
+            "description": "<p>手机号(eq:15220064294)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "countryCode",
+            "description": "<p>国家代码（eq: 86）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>邮箱</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "messageType",
+            "description": "<p>发送验证码类别（0、注册 1、登录，2、忘记资金密码找回, 3、忘记密码，4、身份验证, 5、管理员登录，6、游客绑定邮箱或手机号）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "sendType",
+            "description": "<p>发送验证码形式（1: 短信验证码  2:邮箱验证码）</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"status\": 200,\n    \"message\": \"send Code success\",\n    \"server_time\": 1542382533904,\n    \"data\": {\n        \"messageCode\": \"378047\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n  data: {}\n  message: \"验证码错误\"\n  server_time: 1542082677922\n  status: 500\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:9090/api/user/sendVerificationCode"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "lib/plugin/egg-dora-reguser/app/controller/api/regUser.js",
+    "groupTitle": "User"
   }
 ] });
