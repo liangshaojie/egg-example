@@ -3,6 +3,7 @@
 const Controller = require('egg').Controller;
 const _ = require('lodash');
 const pkg = require('@root/package.json')
+const shortid = require('shortid');
 class HomeController extends Controller {
     // 用户注册页面
     async getDataForUserReg() {
@@ -26,6 +27,21 @@ class HomeController extends Controller {
             await this.getPageData(this);
         }
     }
+    async getDataForContentDetails() {
+        const ctx = this.ctx;
+        let contentId = ctx.params.id;
+        if (contentId) {
+            if (!shortid.isValid(contentId)) {
+                ctx.redirect("/");
+            } else {
+                ctx.pageType = "detail"
+                await this.getPageData(this);
+            }
+        } else {
+            ctx.redirect("/");
+        }
+    }
+
     async getDataForIndexPage() {
         const ctx = this.ctx;
         ctx.query.current = ctx.params.current;
@@ -104,6 +120,11 @@ class HomeController extends Controller {
             let ogImg = siteDomain + "/public/themes/" + defaultTemp.alias + "/images/mobile_logo2.jpeg"
             if (ctx.pageType == 'index') { // 首页
                 pageData.documentList = await ctx.helper.reqJsonData('content/getList', payload);
+            } else if (ctx.pageType == 'detail') {
+                pageData.documentInfo = await ctx.helper.reqJsonData('content/getContent', {
+                    id: payload.id
+                })
+                console.log(pageData.documentInfo)
             }
 
             pageData.ogData = {
