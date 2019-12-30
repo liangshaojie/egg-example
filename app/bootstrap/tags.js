@@ -8,11 +8,8 @@
 'use strict';
 const _ = require('lodash');
 
-
 global.remote = function (appCtx) {
-
     this.tags = ['remote'];
-
     this.parse = function (parser, nodes, lexer) {
         var tok = parser.nextToken();
         var args = parser.parseSignature(null, true);
