@@ -77,7 +77,7 @@ module.exports = {
 
     clearRedisByType(str, cacheKey) {
         console.log('cacheStr', str);
-        let currentKey = this.ctx.session_secret + cacheKey + str;
+        let currentKey = this.config.session_secret + cacheKey + str;
         cache.set(currentKey, '', 2000);
     },
     // 密码加密

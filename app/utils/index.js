@@ -7,6 +7,6 @@
 exports.siteFunc = require('./siteFunc');
 exports.cache = require('./memoryCache');
 // exports.validators = require('./validators');
-// exports.validatorUtil = require('./validatorUtil');
+exports.validatorUtil = require('./validatorUtil');
 // exports.authToken = require('./authToken');
 // exports.mime = require('./mime');

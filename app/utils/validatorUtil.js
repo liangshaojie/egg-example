@@ -3,8 +3,8 @@
  */
 const validator = require("validator");
 
-
 module.exports = {
+
     // 校验字符中是否有特殊字符
     isRegularCharacter(str = "") {
         var pattern = new RegExp("`~@#$^&*()=|{}';'\\[\\].<>/~！@#￥……&*（）——|{}【】‘”“'");
@@ -56,4 +56,5 @@ module.exports = {
     checkUrl(str) {
         return str && validator.isURL(str);
     }
+
 }
