@@ -26,7 +26,7 @@ module.exports = appInfo => {
     // use for cookie sign key, should change to your own and keep security
     config.keys = appInfo.name + '_1575946728695_8972';
     // add your middleware config here  ['gzip', 'printdate']
-    config.middleware = [];
+    config.middleware = ["authUserToken"];
 
     const userConfig = {
         // myAppName: 'egg',

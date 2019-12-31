@@ -288,6 +288,228 @@
   },
   {
     "type": "post",
+    "url": "/api/user/doLogin",
+    "title": "用户登录",
+    "description": "<p>用户登录</p>",
+    "name": "doLogin",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "phoneNum",
+            "description": "<p>手机号（eq:15220064294）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "countryCode",
+            "description": "<p>国家代码（eq: 86）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>用户邮箱(xx@qq.com)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "loginType",
+            "description": "<p>登录类型 (1:手机验证码登录 2:手机号密码登录 3:邮箱密码登录,4:邮箱验证码登录)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "messageCode",
+            "description": "<p>手机验证码(eq: 123456)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码 // 非必填，与短信验证码选其一</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n  data: {\n    comments: \"\"\n    date: \"2018-11-13 12:09:29\"\n    email: \"doramart@qq.com\"\n    enable: true\n    group: \"0\"\n    id: \"zwwdJvLmP\"\n    logo: \"/upload/images/defaultlogo.png\"\n    userName: \"doramart\"\n    token: \"eyJkYXRhIjp7InVzZXJJZCI6Inp3d2RKdkxtUCIsInBob25lTnVtIjoxNTIyMDA2NDI5NH0sImNyZWF0ZWQiOjE1NDI2NDMyNTAsImV4cCI6MzYwMH0=.SW3JVAjkQUX0mgrSBuOirB3kQV6NNatlc4j/qW7SxTM=\"\n  } \n  message: \"登录成功\"\n  server_time: 1542089573405\n  status: 200\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n  data: {}\n  message: \"验证码错误\"\n  server_time: 1542082677922\n  status: 500\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8080/api/user/doLogin"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "lib/plugin/egg-dora-reguser/app/controller/api/regUser.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "/api/user/doReg",
+    "title": "用户注册",
+    "description": "<p>用户注册</p>",
+    "name": "doReg",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "regType",
+            "description": "<p>注册类型（1:手机号注册  2:邮箱注册）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "phoneNum",
+            "description": "<p>手机号（eq:15220064294）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "countryCode",
+            "description": "<p>国家代码（eq: 86）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "messageCode",
+            "description": "<p>手机验证码/邮箱验证码(eq: 123456)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>注册邮箱</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "logo",
+            "description": "<p>用户头像</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userName",
+            "description": "<p>用户名</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"status\": 200,\n   \"message\": \"注册成功\",\n   \"server_time\": 1544246883076,\n   \"data\": {}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n  data: {}\n  message: \"注册失败\"\n  server_time: 1542082677922\n  status: 500\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8080/api/user/doReg"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "lib/plugin/egg-dora-reguser/app/controller/api/regUser.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
     "url": "/api/user/sendVerificationCode",
     "title": "发送验证码",
     "description": "<p>发送验证码</p>",

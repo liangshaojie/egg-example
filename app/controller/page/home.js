@@ -95,6 +95,7 @@ class HomeController extends Controller {
         let defaultTemp = await ctx.helper.reqJsonData('contentTemplate/getDefaultTempInfo');
 
         // 获取用户信息
+        debugger
         if (ctx.session.logined) {
             pageData.userInfo = ctx.session.user;
             pageData.logined = ctx.session.logined;
