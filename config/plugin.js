@@ -20,6 +20,8 @@ exports.nunjucks = {
     package: 'egg-view-nunjucks',
 };
 
+exports.session = true;
+
 exports.mongoose = {
     enable: true,
     package: 'egg-mongoose',

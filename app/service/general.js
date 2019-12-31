@@ -120,6 +120,39 @@ exports._count = async(Model, query = {}) => {
     return await Model.countDocuments(query);
 }
 
-exports._create = async (Model, payload) => {
+exports._create = async(Model, payload) => {
     return await Model.create(payload);
+}
+
+/**
+ * 通用编辑
+ * @method update
+ * @param  {[type]} Model [description]
+ * @param  {[type]} _id     [description]
+ * @param  {[type]} data    [description]
+ */
+exports._update = async(ctx, Model, _id, data, query = {}) => {
+
+    if (_id) {
+        query = _.assign({}, query, {
+            _id: _id
+        });
+    } else {
+        if (_.isEmpty(query)) {
+            throw new Error(ctx.__('validate_error_params'));
+        }
+    }
+
+    const user = await this._item(ctx, Model, {
+        query: query
+    })
+
+    if (_.isEmpty(user)) {
+        throw new Error(ctx.__('validate_error_params'));
+    }
+
+    return await Model.findOneAndUpdate(query, {
+        $set: data
+    });
+
 }

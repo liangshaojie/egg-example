@@ -19,6 +19,7 @@ class HomeController extends Controller {
     // 显示login页面
     async getDataForUserLogin() {
         const ctx = this.ctx;
+        debugger
         if (ctx.session.user) {
             ctx.redirect("/");
         } else {
