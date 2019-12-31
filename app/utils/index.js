@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-09-23 09:23:13
  */
 exports.siteFunc = require('./siteFunc');
-// exports.cache = require('./memoryCache');
+exports.cache = require('./memoryCache');
 // exports.validators = require('./validators');
 // exports.validatorUtil = require('./validatorUtil');
 // exports.authToken = require('./authToken');

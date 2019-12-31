@@ -17,6 +17,18 @@ global.getContentListFields = (type = '') => {
     return files;
 }
 
+global.getAuthUserFields = (type = '') => {
+    let fieldStr = "id userName category group logo date enable state";
+    if (type == 'login') {
+        fieldStr = "id userName category group logo date enable state phoneNum countryCode email comments position loginActive birth password";
+    } else if (type == 'base') {
+        fieldStr = "id userName category group logo date enable state phoneNum countryCode email watchers followers comments favorites favoriteCommunityContent despises comments profession experience industry introduction birth creativeRight gender";
+    } else if (type == 'session') {
+        fieldStr = "id userName name category group logo date enable state phoneNum countryCode email watchers followers praiseContents praiseMessages praiseCommunityContent watchSpecials watchCommunity watchTags favorites favoriteCommunityContent despises despiseMessage despiseCommunityContent comments position gender vip";
+    }
+    return fieldStr;
+}
+
 
 global.emailTypeKey = {
     email_findPsd: 'findPsd',

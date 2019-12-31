@@ -7,7 +7,8 @@ let crypto = require("crypto");
 let nodemailer = require("nodemailer");
 
 const {
-    siteFunc
+    siteFunc,
+    cache
 } = require('@root/app/utils/index.js');
 
 module.exports = {
@@ -72,6 +73,20 @@ module.exports = {
             throw new Error(message);
         }
 
+    },
+
+    clearRedisByType(str, cacheKey) {
+        console.log('cacheStr', str);
+        let currentKey = this.ctx.session_secret + cacheKey + str;
+        cache.set(currentKey, '', 2000);
+    },
+    // 密码加密
+    encrypt(data, key) {
+        let cipher = crypto.createCipher("bf", key);
+        let newPsd = "";
+        newPsd += cipher.update(data, "utf8", "hex");
+        newPsd += cipher.final("hex");
+        return newPsd;
     },
     // APP加密
     encryptApp(key, iv, data) {
